@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="topnav" id="myTopnav">
+    <a href="/"  class ="ecommerce" >E-Commerce</a>
+  <div class="dropdown">
+    <button class="dropbtn">Categories
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="/">All</a>
+      {% for c in categories %}
+        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+        {% if member %}<a href="myprofile/" style="float: right">MY PROFILE</a>{% else %}<a href="login/" style="float: right">Sign in</a>{% endif %}
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+<div class="gallery">
+    {% for product in products %}
+        <div class="content">
+            <img src="{{product.productimg.url}}" alt="products">
+            <h3><a href="{{ product.get_absolute_url }}" class="text-muted" data-abc="true">{{product.title}}</a></h3>
+            <p>CATEGORY: {{product.category}}</p>
+            <h6>${{product.price}}</h6>
+            <button class="buy-2">Buy Now</button>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+{% endblock %}
+
+

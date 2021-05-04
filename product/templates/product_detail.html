@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="container">
+
+      <!-- Left Column / Headphones Image -->
+      <div class="left-column">
+        <img data-image="red" class="active" src="{{product.productimg.url}}" alt="">
+      </div>
+
+
+      <!-- Right Column -->
+      <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+          <span>CATEGORY: {{product.category}}</span>
+          <h1>{{product.title}}</h1>
+          <p>{{product.product_description}}</p>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+          <span>{{product.price}}$</span>
+          <a href="#" class="cart-btn">Add to cart</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
+{% endblock %}
